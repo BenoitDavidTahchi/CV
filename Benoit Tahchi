@@ -1,0 +1,495 @@
+import React, { useState } from 'react';
+import { 
+  MapPin, 
+  Mail, 
+  Phone, 
+  Building2, 
+  Cpu, 
+  Network, 
+  Briefcase, 
+  GraduationCap, 
+  Layers,
+  MonitorCheck,
+  Globe,
+  Image as ImageIcon,
+  Download,
+  Linkedin,
+  Globe2,
+  QrCode,
+  Loader2,
+  CheckCircle2
+} from 'lucide-react';
+
+const App = () => {
+  // ETAT POUR GÉRER LE CHARGEMENT DU PDF
+  const [downloadState, setDownloadState] = useState('idle'); // 'idle', 'loading', 'success'
+
+  const handleDownloadPDF = () => {
+    if (downloadState === 'loading') return;
+    
+    setDownloadState('loading');
+    
+    // Simulation du temps de génération/téléchargement du PDF
+    setTimeout(() => {
+      setDownloadState('success');
+      
+      // Ici, en production réelle, vous mettriez le lien vers votre fichier PDF statique :
+      // window.open('/mon-cv-officiel.pdf', '_blank');
+      // Pour la démo, nous lançons l'interface d'impression native du navigateur
+      window.print();
+
+      // Retour à l'état normal après quelques secondes
+      setTimeout(() => setDownloadState('idle'), 3000);
+    }, 2000);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-blue-200">
+      
+      {/* EN-TÊTE DU CV */}
+      <header className="bg-slate-900 text-white py-16 px-8 sm:px-16 lg:px-24 print:bg-white print:text-black print:py-8">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          <div className="flex-1">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">Benoit David Tahchi</h1>
+            <h2 className="text-xl md:text-2xl text-blue-400 font-medium mb-6 print:text-blue-700">Senior Design & BIM Manager | Digital Transformation & AI</h2>
+            
+            <p className="text-slate-300 text-sm md:text-base max-w-2xl leading-relaxed print:text-slate-700">
+              Highly skilled Architect and Senior Design Manager with 18+ years of global experience across Europe, the Middle East, and Asia. 
+              Pioneering the integration of AI-based technology, BIM Level 2/3, and VDC mechanisms into mega-scale architecture and construction projects. 
+              Proven track record in optimizing project management through computational design, digital cloud environments, and rigorous QA/QC automation.
+            </p>
+          </div>
+          
+          <div className="flex flex-col gap-3 text-sm font-medium text-slate-300 bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm print:border-slate-300 print:text-slate-800">
+            <div className="flex items-center gap-3">
+              <MapPin className="w-5 h-5 text-blue-400 print:text-blue-700" />
+              <span>Luxembourg (Citizenship: EU & Lebanese)</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Phone className="w-5 h-5 text-blue-400 print:text-blue-700" />
+              <span>+352 621 692 812</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Mail className="w-5 h-5 text-blue-400 print:text-blue-700" />
+              <span>benoit.david.tahchi@hotmail.fr</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* CONTENU PRINCIPAL */}
+      <main className="max-w-6xl mx-auto py-12 px-8 sm:px-16 lg:px-24 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start relative z-10">
+        
+        {/* COLONNE GAUCHE - BLOCS TECHNIQUES PREMIUM (STICKY) */}
+        <aside className="space-y-6 lg:sticky lg:top-8">
+          
+          {/* CARTE PROFIL & LIENS */}
+          <section className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-2xl shadow-blue-900/10 flex flex-col items-center text-center relative overflow-hidden group print:border-slate-300 print:bg-white">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 print:bg-blue-600"></div>
+            
+            {/* Effet de brillance en arrière-plan */}
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none print:hidden"></div>
+
+            {/* Photo de profil (Épurée & Interactive) */}
+            <div className="relative mb-6 p-1.5 border border-slate-600 rounded-full bg-slate-800/50 shadow-inner group-hover:border-blue-500/50 transition-colors duration-500 print:border-slate-300">
+              <img 
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=256" 
+                alt="Benoit Tahchi" 
+                className="w-28 h-28 object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+
+            {/* Boutons d'action - UI Moderne */}
+            <div className="w-full space-y-3 relative z-10 print:hidden">
+              {/* BOUTON AVEC ZONE DE CHARGEMENT INTÉGRÉE */}
+              <button 
+                onClick={handleDownloadPDF}
+                disabled={downloadState === 'loading'}
+                className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-semibold text-xs uppercase tracking-widest transition-all duration-300 ${
+                  downloadState === 'success' 
+                    ? 'bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] active:scale-95'
+                }`}
+              >
+                {downloadState === 'idle' && (
+                  <><Download className="w-4 h-4" /> Télécharger PDF</>
+                )}
+                {downloadState === 'loading' && (
+                  <><Loader2 className="w-4 h-4 animate-spin" /> Génération...</>
+                )}
+                {downloadState === 'success' && (
+                  <><CheckCircle2 className="w-4 h-4" /> Prêt !</>
+                )}
+              </button>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <a href="#" className="flex items-center justify-center gap-2 bg-slate-800/80 border border-slate-700 hover:border-blue-500/50 text-slate-300 hover:text-white py-2 rounded-xl text-xs uppercase tracking-widest transition-all font-semibold hover:bg-slate-700/50">
+                  <Linkedin className="w-4 h-4" />
+                  LinkedIn
+                </a>
+                <a href="#" className="flex items-center justify-center gap-2 bg-slate-800/80 border border-slate-700 hover:border-blue-500/50 text-slate-300 hover:text-white py-2 rounded-xl text-xs uppercase tracking-widest transition-all font-semibold hover:bg-slate-700/50">
+                  <Globe2 className="w-4 h-4" />
+                  Portfolio
+                </a>
+              </div>
+            </div>
+
+            {/* Encart QR Code Baabdath - Call to Action attrayant */}
+            <div className="w-full mt-6 rounded-xl border border-slate-700 bg-slate-800/30 p-3 flex items-center gap-4 text-left hover:bg-slate-800/80 hover:border-blue-500/50 transition-all cursor-pointer group/qr overflow-hidden relative print:border-slate-300 print:bg-white">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 translate-x-[-100%] group-hover/qr:translate-x-[100%] transition-transform duration-1000 print:hidden"></div>
+              <div className="shrink-0 relative">
+                <div className="absolute inset-0 bg-blue-500/20 blur-md rounded-full group-hover/qr:animate-pulse print:hidden"></div>
+                <QrCode className="w-10 h-10 text-slate-300 group-hover/qr:text-blue-400 relative z-10 transition-colors print:text-slate-800" />
+              </div>
+              <div className="border-l border-slate-600 pl-3 relative z-10 print:border-slate-300">
+                <p className="text-xs font-bold text-white uppercase tracking-widest mb-0.5 group-hover/qr:text-blue-300 transition-colors print:text-slate-900">Scannez-moi</p>
+                <p className="text-[10px] text-slate-400 leading-tight print:text-slate-600">Acoustique Baabdath & Vues 3D</p>
+              </div>
+            </div>
+          </section>
+
+          {/* CARTE TECH & AI */}
+          <section className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-xl hover:border-slate-600 transition-colors print:border-slate-300 print:bg-white">
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-800 print:border-slate-300">
+              <div className="flex items-center gap-3">
+                <div className="p-1.5 bg-blue-500/10 rounded-lg print:bg-slate-100">
+                  <Cpu className="w-4 h-4 text-blue-400 print:text-blue-700" />
+                </div>
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest print:text-slate-900">Tech & AI</h3>
+              </div>
+            </div>
+            <div className="space-y-5">
+              <SkillDimension title="BIM & VDC Strategy" percentage="100%" />
+              <SkillDimension title="Autodesk Const. Cloud" percentage="100%" />
+              <SkillDimension title="AI Design (Forma)" percentage="90%" />
+              <SkillDimension title="Rhino/Grasshopper" percentage="85%" />
+              <SkillDimension title="Digital Twin" percentage="90%" />
+            </div>
+          </section>
+
+          {/* CARTE LOGICIELS */}
+          <section className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-xl hover:border-slate-600 transition-colors print:border-slate-300 print:bg-white">
+            <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-800 print:border-slate-300">
+              <div className="p-1.5 bg-blue-500/10 rounded-lg print:bg-slate-100">
+                <MonitorCheck className="w-4 h-4 text-blue-400 print:text-blue-700" />
+              </div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest print:text-slate-900">Logiciels</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {['Revit', 'Navisworks', 'AutoCAD 2D-3D', 'Rhinoceros', 'Grasshopper', 'BIM 360', 'Photoshop', '3ds Max'].map(tool => (
+                <span key={tool} className="border border-slate-700 text-slate-300 bg-slate-800/80 px-2.5 py-1.5 rounded-lg text-xs font-medium tracking-wide hover:border-blue-500 hover:text-blue-300 hover:shadow-[0_0_10px_rgba(37,99,235,0.2)] transition-all cursor-default print:bg-slate-100 print:text-slate-800 print:border-slate-300">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          {/* CARTE MANAGEMENT */}
+          <section className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-xl hover:border-slate-600 transition-colors print:border-slate-300 print:bg-white">
+            <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-800 print:border-slate-300">
+              <div className="p-1.5 bg-blue-500/10 rounded-lg print:bg-slate-100">
+                <Network className="w-4 h-4 text-blue-400 print:text-blue-700" />
+              </div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest print:text-slate-900">Management</h3>
+            </div>
+            <ul className="space-y-1">
+              {[
+                'Automated Approval Workflows',
+                'Spatial Coordination & Clashes',
+                'Value Engineering (VE) & Cost',
+                'Design for Maintainability'
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-800/50 transition-colors cursor-default group print:p-1">
+                  <span className="text-blue-500 font-bold mt-0.5 group-hover:scale-125 transition-transform print:text-blue-700">+</span>
+                  <span className="text-sm text-slate-300 group-hover:text-white transition-colors print:text-slate-800">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* CARTE LANGUES */}
+          <section className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-xl hover:border-slate-600 transition-colors print:border-slate-300 print:bg-white">
+            <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-800 print:border-slate-300">
+              <div className="p-1.5 bg-blue-500/10 rounded-lg print:bg-slate-100">
+                <Globe className="w-4 h-4 text-blue-400 print:text-blue-700" />
+              </div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest print:text-slate-900">Langues</h3>
+            </div>
+            <div className="space-y-1 text-sm text-slate-300 print:text-slate-800">
+              <div className="flex justify-between items-center p-2 rounded-lg hover:bg-slate-800/50 transition-colors print:p-1">
+                <span>English</span>
+                <span className="text-[10px] font-bold uppercase text-blue-200 bg-blue-600/30 border border-blue-500/30 px-2 py-0.5 rounded-full print:bg-slate-100 print:text-slate-800 print:border-slate-300">Bilingue</span>
+              </div>
+              <div className="flex justify-between items-center p-2 rounded-lg hover:bg-slate-800/50 transition-colors print:p-1">
+                <span>French</span>
+                <span className="text-[10px] font-bold uppercase text-blue-200 bg-blue-600/30 border border-blue-500/30 px-2 py-0.5 rounded-full print:bg-slate-100 print:text-slate-800 print:border-slate-300">Bilingue</span>
+              </div>
+              <div className="flex justify-between items-center p-2 rounded-lg hover:bg-slate-800/50 transition-colors print:p-1">
+                <span>Arabic</span>
+                <span className="text-[10px] font-bold uppercase text-blue-200 bg-blue-600/30 border border-blue-500/30 px-2 py-0.5 rounded-full print:bg-slate-100 print:text-slate-800 print:border-slate-300">Bilingue</span>
+              </div>
+              <div className="flex justify-between items-center p-2 rounded-lg hover:bg-slate-800/50 transition-colors print:p-1">
+                <span className="text-slate-400 print:text-slate-600">Spanish</span>
+                <span className="text-[10px] text-slate-500 uppercase tracking-wider print:text-slate-500">Base</span>
+              </div>
+              <div className="flex justify-between items-center p-2 rounded-lg hover:bg-slate-800/50 transition-colors print:p-1">
+                <span className="text-slate-400 print:text-slate-600">Polish</span>
+                <span className="text-[10px] text-slate-500 uppercase tracking-wider print:text-slate-500">Base</span>
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        {/* COLONNE DROITE - Expérience & Éducation */}
+        <div className="lg:col-span-2 space-y-10">
+          
+          {/* Expériences Pro */}
+          <section>
+            <div className="flex items-center gap-3 mb-8 border-b-2 border-slate-200 pb-2">
+              <Briefcase className="w-6 h-6 text-blue-600" />
+              <h3 className="text-2xl font-bold text-slate-900 uppercase tracking-widest">Expérience Professionnelle</h3>
+            </div>
+            
+            <div className="space-y-10 border-l-2 border-slate-100 ml-3">
+              <ExperienceItem 
+                title="Projects Management (Architectural Design & Digital Transformation)"
+                company="CFL - Chemins de Fer Luxembourgeois"
+                date="Sep 2021 – Mar 2022"
+                details={[
+                  "Managed the architectural design for mega-scale mixed-use programs (100k sqm), focusing on facade engineering, fire & life safety strategies, and crowd management.",
+                  "Created design proposals and feasibility studies using state-of-the-art AI-based technology to optimize time while preserving intended quality.",
+                  "Initiated and deployed the Autodesk Construction Cloud (ACC) platform (Docs, Build, Insight) to establish a completely automated project development process.",
+                  "Authored internal BIM charts, Spatial Coordination workflows, and QA/QC KPIs to evaluate the maturity levels of submitted BIM models from stakeholders."
+                ]}
+              />
+
+              <ExperienceItem 
+                title="Preconstruction Technical Manager – BIM Digital Transformation"
+                company="AMAZON EU | Luxembourg"
+                date="Dec 2019 – Aug 2021"
+                details={[
+                  "Engineered the Digital QA/QC framework for Amazon EU Fulfillment Centers (IXD, TNS, ARS & Buildouts), authoring foundational White Papers for digital protocols.",
+                  "Monitored digital transformation adoption across complex networks including PMCMs, Amazon Robotics, and Worldwide Design Engineers (Material Handling Equipment).",
+                  "Automated approval process tools within BIM 360 for both greenfield and brownfield core fulfillment centers.",
+                  "Facilitated collaboration and aligned project milestones across varied Amazon Business Units through standardized Information Sheets."
+                ]}
+              />
+
+              <ExperienceItem 
+                title="Senior Design Manager & BIM Discipline Leader"
+                company="AGH Consulting (for Vinci Construction & Bouygues Construction) | Asia"
+                date="2019"
+                details={[
+                  "KOS International Airport, Cambodia (Vinci): Led master planning and project coordination with Airport Authorities. Managed spatial coordination (Navisworks) for the Baggage Handling System (BHS), SCADA rooms, and authored comprehensive Fire Risk Analysis and smoke control reports.",
+                  "The Glory Tower, Singapore (Bouygues / BIG Architects): Managed technical design, drawing reviews, and scope interface for a 51-storey premium mixed-use high-rise (offices, retail, and 299 serviced apartments).",
+                  "Generated critical Design for Maintainability (DFM) and Design for Safety (DFS) reports for complex architectural zones across both mega-projects."
+                ]}
+              />
+
+              <ExperienceItem 
+                title="Senior Architect & BIM Manager Consultant"
+                company="E-Construct (Dubai) & SUD Architectes (Intl.)"
+                date="2019"
+                details={[
+                  "Expo2020 Pavilion Plaza (Dubai): Supervised site integration, managed value engineering, and tracked technical material submittals (NCRs, WIRs, MIRs) to secure final authority approvals.",
+                  "Residential Complexes (68k sqm): Led BIM workflows, developing outstanding parametric Revit families and enforcing rigorous model validation and coordination (health checks)."
+                ]}
+              />
+
+              <ExperienceItem 
+                title="Design Architect & Group Leader"
+                company="DAR Group | Dubai, Beirut & London"
+                date="Aug 2010 – Jan 2019"
+                details={[
+                  "Dubai Arena (58k sqm, 17k seats): Led design development from schematic to completion under strict BIM coordination with Populous, operators, and contractors.",
+                  "Algerian Presidency HQ ($2B+): Managed Rhino-to-Revit modeling workflows in collaboration with Zaha Hadid Architects for a 34,000 sqm presidential palace and utility plant.",
+                  "University Campuses: Coordinated with Perkins & Will on masterplanning and Revit development for Sabah Al Salem University City (Kuwait) and Salahaddin University (Erbil, 1.3M sqm).",
+                  "DXB Airport Concourses & Terminals: Led BIM coordination, focusing on Baggage Handling Systems (BHS) clash detection, metal detectors, and reclaim areas.",
+                  "Hospitality & Healthcare: Managed value engineering, NOC approvals, and contractor interfaces for Deira Islands hotels (RIU & Centara - 117k sqm) and MOI Medical City in Jeddah."
+                ]}
+              />
+
+              <ExperienceItem 
+                title="Design Architect"
+                company="Architecture Studio (AS) & Valode & Pistre (VP) | Paris, France"
+                date="Jul 2006 – Jun 2010"
+                details={[
+                  "Contributed to high-profile international design studios, developing housing, retail, mixed-use programs, theaters (e.g., Grand Theater of Beirut), and urban planning initiatives.",
+                  "Specialized in architectural presentations, high-end 3D rendering, and physical model fabrication."
+                ]}
+              />
+            </div>
+          </section>
+
+          {/* Specialized Architecture & AI Projects */}
+          <section>
+            <div className="flex items-center gap-2 mb-8 border-b-2 border-slate-200 pb-2">
+              <Layers className="w-6 h-6 text-blue-600" />
+              <h3 className="text-2xl font-bold text-slate-900 uppercase tracking-widest">Freelance & Generative Projects</h3>
+            </div>
+            <div className="bg-white p-6 shadow-sm border border-slate-100 rounded-xl">
+              <ul className="space-y-6 text-slate-700">
+                <li className="flex items-start gap-4">
+                  <div className="bg-blue-50 p-2 rounded-lg shrink-0 mt-0.5">
+                    <Building2 className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <strong className="text-slate-900 block mb-1">Eco-Integrated Residence, Baabdath (Mount Lebanon)</strong>
+                    <p className="text-sm leading-relaxed">Architected a highly personalized, environmentally responsive private villa immersed in the Baabdath pine forests. Leveraged site analysis and computational tools to maximize natural acoustics—optimizing the sounds of cicadas, local birdlife, and wind patterns—creating a seamless indoor-outdoor sanctuary.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="bg-blue-50 p-2 rounded-lg shrink-0 mt-0.5">
+                    <Building2 className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <strong className="text-slate-900 block mb-1">Nazareth School Extension & St. Georges University (Beirut)</strong>
+                    <p className="text-sm leading-relaxed">Developed competition designs including an 11,000 sqm auditorium/parking annex for Nazareth School (focusing on historical integration and flow segregation) and a fully BIM-modeled 5-faculty high-tech campus (22,650 sqm) for St. Georges University.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Education & Training */}
+          <section>
+            <div className="flex items-center gap-2 mb-8 border-b-2 border-slate-200 pb-2">
+              <GraduationCap className="w-6 h-6 text-blue-600" />
+              <h3 className="text-2xl font-bold text-slate-900 uppercase tracking-widest">Education & Advancements</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                <p className="text-xs font-bold text-slate-400 mb-1 tracking-widest">JUNE 2006</p>
+                <h4 className="font-bold text-slate-900 text-lg">National Architecture Masters Degree (DPLG)</h4>
+                <p className="text-sm text-slate-500 mt-2">Éav&t - École Nationale Supérieure d'Architecture, Paris, France</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                <p className="text-xs font-bold text-slate-400 mb-1 tracking-widest">JUNE 2002</p>
+                <h4 className="font-bold text-slate-900 text-lg">Fine Arts Architecture</h4>
+                <p className="text-sm text-slate-500 mt-2">ALBA - Lebanese Academy of Fine Arts, Beirut</p>
+              </div>
+              <div className="md:col-span-2 bg-slate-900 text-white p-6 rounded-xl shadow-lg border border-slate-800 print:bg-white print:border-slate-300 print:text-slate-800">
+                <h4 className="font-bold flex items-center gap-2 mb-4 uppercase tracking-widest text-sm text-blue-400 print:text-blue-700">
+                  <Cpu className="w-4 h-4" /> Specialized Tech Training & Events
+                </h4>
+                <ul className="text-sm text-slate-300 space-y-3 print:text-slate-800">
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 font-bold mt-0.5">+</span>
+                    <span><strong>Computational Design:</strong> Rhinoceros / Grasshopper / Revit interface (Goldsmith Training, London)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 font-bold mt-0.5">+</span>
+                    <span><strong>Recent Events:</strong> BIM World - Digital Twin 2024 (Paris), Expert Talks on Sustainability & Digitalization</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+      {/* PORTFOLIO GALLERY SECTION */}
+      <section className="max-w-6xl mx-auto py-16 px-8 sm:px-16 lg:px-24 border-t border-slate-200 print:hidden">
+        <div className="flex items-center gap-3 mb-10">
+          <ImageIcon className="w-8 h-8 text-blue-600" />
+          <h3 className="text-3xl font-extrabold text-slate-900 uppercase tracking-widest">Selected Works</h3>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <GalleryCard 
+            title="Dubai Arena (Coca-Cola Arena)" 
+            subtitle="58,000 sqm | 17,000 Seats | BIM Level 2"
+            image="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&q=80&w=800"
+          />
+          <GalleryCard 
+            title="The Glory Tower, Singapore" 
+            subtitle="51-Storey Premium Mixed-Use High-Rise"
+            image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+          />
+          <GalleryCard 
+            title="Eco-Integrated Residence, Baabdath" 
+            subtitle="Computational Acoustics & Pine Forest Integration"
+            image="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=800"
+          />
+          <GalleryCard 
+            title="Algerian Presidency HQ" 
+            subtitle="$2B+ | 34,000 sqm | Rhino-to-Revit Workflow"
+            image="https://images.unsplash.com/photo-1523628741366-a32062402175?auto=format&fit=crop&q=80&w=800"
+          />
+          <GalleryCard 
+            title="KOS International Airport" 
+            subtitle="Terminal Expansion & BHS Spatial Coordination"
+            image="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800"
+          />
+          <GalleryCard 
+            title="St. Georges University Campus" 
+            subtitle="22,650 sqm | 5-Faculty High-Tech Campus"
+            image="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800"
+          />
+        </div>
+      </section>
+    </div>
+  );
+};
+
+// --- COMPOSANTS RÉUTILISABLES ---
+
+const SkillDimension = ({ title, percentage }) => (
+  <div className="group">
+    <div className="flex justify-between items-end mb-1">
+      <span className="text-xs text-slate-300 font-medium tracking-wide group-hover:text-white transition-colors print:text-slate-800">{title}</span>
+      <span className="text-[10px] text-blue-400 font-bold opacity-80 group-hover:opacity-100 transition-opacity print:text-blue-700">{percentage}</span>
+    </div>
+    {/* Ligne de dimension technique (Style UI moderne) */}
+    <div className="relative w-full h-[3px] bg-slate-800 rounded-full mt-1.5 overflow-visible print:bg-slate-200">
+      <div 
+        className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all duration-1000 print:shadow-none" 
+        style={{ width: percentage }}
+      >
+        {/* Point lumineux (Node) à la fin de la barre */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 print:hidden"></div>
+      </div>
+    </div>
+  </div>
+);
+
+const ExperienceItem = ({ title, company, date, details }) => (
+  <div className="relative pl-8 pb-8 group">
+    {/* Point architectural sur la timeline */}
+    <div className="absolute w-3 h-3 bg-white border-2 border-blue-600 rounded-full -left-[7.5px] top-1.5 group-hover:bg-blue-600 transition-colors shadow-sm"></div>
+    
+    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
+      <h4 className="text-lg font-bold text-slate-900">{title}</h4>
+      <span className="text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 sm:ml-4">{date}</span>
+    </div>
+    <p className="text-sm font-semibold text-blue-700 mb-4 uppercase tracking-wide">{company}</p>
+    <ul className="space-y-3">
+      {details.map((detail, idx) => (
+        <li key={idx} className="text-sm text-slate-600 leading-relaxed text-justify flex items-start gap-3">
+          <span className="text-slate-300 mt-1.5 text-[10px]">■</span>
+          <span>{detail}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const GalleryCard = ({ title, subtitle, image }) => (
+  <div className="group relative overflow-hidden rounded-xl bg-slate-200 aspect-[4/3] shadow-sm hover:shadow-xl transition-all duration-300">
+    <img 
+      src={image} 
+      alt={title} 
+      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+      <h4 className="text-white font-bold text-lg leading-tight mb-1">{title}</h4>
+      <p className="text-blue-300 text-sm font-medium">{subtitle}</p>
+    </div>
+  </div>
+);
+
+export default App;
