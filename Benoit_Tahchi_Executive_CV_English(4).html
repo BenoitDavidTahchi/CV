@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benoit David Tahchi - Executive CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --ink: #0f172a;
+            --muted: #475569;
+            --line: #cbd5e1;
+            --soft: #f8fafc;
+            --accent: #1d4ed8;
+            --accent-dark: #1e3a8a;
+        }
+
+        body {
+            background-color: #cbd5e1;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 0 auto 15mm auto;
+            padding: 14mm 18mm;
+            box-sizing: border-box;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 4.5mm;
+            background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 52%, #64748b 100%);
+        }
+
+        .section-title {
+            color: var(--ink);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 11px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .role-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: baseline;
+        }
+
+        .date-pill {
+            color: var(--accent-dark);
+            font-weight: 800;
+            font-size: 11px;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .company-line {
+            color: #64748b;
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 2px;
+            margin-bottom: 5px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 3px;
+        }
+
+        .skill-group-title {
+            font-size: 10.5px;
+            font-weight: 800;
+            color: var(--accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        .skill-line {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.45;
+        }
+
+        .micro-label {
+            font-size: 9.5px;
+            color: #64748b;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
+
+        .no-print button { cursor: pointer; }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm 13mm;
+            }
+
+            body, html {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .no-print { display: none !important; }
+            .pt-20 { padding-top: 0 !important; }
+            .pb-10 { padding-bottom: 0 !important; }
+
+            .a4-page {
+                width: auto !important;
+                min-height: 0 !important;
+                height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                page-break-after: always !important;
+                overflow: visible !important;
+            }
+
+            .a4-page:last-child {
+                page-break-after: auto !important;
+            }
+
+            .page-accent { display: none !important; }
+
+            .avoid-break {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-200 font-sans text-[11.5px] leading-relaxed">
+
+    <div class="no-print bg-slate-950 text-white py-3 px-6 flex justify-between items-center fixed top-0 w-full z-50 shadow-md">
+        <div class="text-xs font-semibold tracking-wider">
+            <span class="text-amber-300 uppercase">Executive CV — English / 2 pages:</span> Export HTML → Open in Chrome → Ctrl+P → Save as PDF
+        </div>
+        <button onclick="exportHTML()" class="bg-blue-700 hover:bg-blue-600 text-white px-5 py-2 rounded font-bold text-sm transition-colors flex items-center gap-2 shadow-sm border border-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            EXPORT HTML
+        </button>
+    </div>
+
+    <div class="w-full pt-20 pb-10">
+
+        <!-- PAGE 1 -->
+        <main class="a4-page">
+            <div class="page-accent"></div>
+            <div class="pl-2">
+
+                <!-- HEADER -->
+                <header class="mb-4 pb-4 border-b border-slate-300">
+                    <div class="grid grid-cols-[1fr_auto] gap-6 items-start">
+                        <div>
+                            <div class="micro-label mb-1">Executive Curriculum Vitae</div>
+                            <h1 class="text-[33px] font-black uppercase tracking-[-0.035em] text-slate-950 leading-none">Benoit David Tahchi</h1>
+                            <h2 class="text-[13px] font-extrabold text-blue-800 tracking-[0.18em] uppercase mt-2 leading-snug">
+                                Senior Architect | BIM & Digital Delivery Manager | Complex Infrastructure Projects
+                            </h2>
+                        </div>
+                        <div class="text-right text-[10.5px] leading-snug text-slate-600 pt-1 min-w-[47mm]">
+                            <div class="font-bold text-slate-900">Luxembourg</div>
+                            <div>+352 621 692 812</div>
+                            <a href="mailto:benoit_david_tahchi@hotmail.fr" class="text-blue-800 font-semibold hover:underline">benoit_david_tahchi@hotmail.fr</a><br>
+                            <a href="https://www.linkedin.com/in/benoit-david-tahchi-58b9661/" target="_blank" class="text-blue-800 font-semibold hover:underline">linkedin.com/in/benoit-david-tahchi-58b9661</a><br>
+                            <a href="https://benoitdavidtahchi.github.io/CV/Benoit_Tahchi_Digital_Portfolio-.html" target="_blank" class="text-blue-800 font-semibold hover:underline">Benoit Tahchi - Visual digital Portfolio</a>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- EXECUTIVE SNAPSHOT -->
+                <section class="mb-4 avoid-break">
+                    <div class="grid grid-cols-5 gap-2">
+                        <div class="bg-slate-50 border border-slate-200 rounded-md px-2 py-2">
+                            <div class="text-[18px] font-black text-slate-950 leading-none">18+</div>
+                            <div class="text-[9.5px] font-bold uppercase tracking-wide text-slate-500 mt-1">Years</div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-md px-2 py-2">
+                            <div class="text-[18px] font-black text-slate-950 leading-none">100k+ m²</div>
+                            <div class="text-[9.5px] font-bold uppercase tracking-wide text-slate-500 mt-1">Large Projects</div>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 rounded-md px-2 py-2">
+                            <div class="text-[18px] font-black text-blue-900 leading-none">Airports</div>
+                            <div class="text-[9.5px] font-bold uppercase tracking-wide text-blue-700 mt-1">KOS / DXB</div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-md px-2 py-2">
+                            <div class="text-[18px] font-black text-slate-950 leading-none">BIM + AI</div>
+                            <div class="text-[9.5px] font-bold uppercase tracking-wide text-slate-500 mt-1">ACC / Dashboards</div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-md px-2 py-2">
+                            <div class="text-[18px] font-black text-slate-950 leading-none">EU / ME / Asia</div>
+                            <div class="text-[9.5px] font-bold uppercase tracking-wide text-slate-500 mt-1">Global Delivery</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EXECUTIVE PROFILE -->
+                <section class="mb-4 avoid-break">
+                    <h3 class="section-title">Executive Profile</h3>
+                    <div class="text-[11.6px] text-slate-700 text-justify space-y-1.5">
+                        <p>
+                            DPLG Architect and senior design / BIM coordination profile with more than 18 years of international experience across Asia (Singapore and Cambodia), Europe (United Kingdom, France and Luxembourg) and the Middle East (Lebanon, Jordan and Dubai/UAE). Proven exposure to complex infrastructure, airports, logistics, public buildings and mixed-use developments, combining architectural leadership, technical coordination, design management and digital delivery across the full project lifecycle, from feasibility and concept development through tender, execution and construction follow-up.
+                        </p>
+                        <p>
+                            Experienced in coordinating multidisciplinary stakeholders, including client-side teams, design consultants, engineers, contractors, internal departments and authorities. Strong command of BIM, CAD and collaborative delivery platforms, combining BIM governance with AI-assisted dashboards, ACC-based reporting and interactive digital solutions to improve design quality, technical compliance, information control and project governance on demanding international programmes.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- KEY VALUE -->
+                <section class="mb-4 avoid-break">
+                    <h3 class="section-title">Leadership Impact</h3>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-2.5 text-[11.3px] text-slate-700">
+                        <div class="flex gap-2"><span class="text-blue-700 font-black">•</span><p><strong class="text-slate-950">Architectural & BIM leadership</strong> on major infrastructure projects, including Sihanoukville International Airport and Dubai International Airport expansions.</p></div>
+                        <div class="flex gap-2"><span class="text-blue-700 font-black">•</span><p><strong class="text-slate-950">End-to-end project delivery</strong> across OAI-equivalent phases, with strong involvement in design control, tender preparation, execution coordination and construction follow-up.</p></div>
+                        <div class="flex gap-2"><span class="text-blue-700 font-black">•</span><p><strong class="text-slate-950">Complex stakeholder coordination</strong> across architecture, MEP, BHS, fire safety, operations, reviewing authorities and client-side governance.</p></div>
+                        <div class="flex gap-2"><span class="text-blue-700 font-black">•</span><p><strong class="text-slate-950">AI-assisted digital delivery</strong> with BIM/ACC dashboards, QA/QC reporting, issue-tracking intelligence and workflow optimisation.</p></div>
+                    </div>
+                </section>
+
+                <!-- EXPERIENCE PAGE 1 -->
+                <section>
+                    <h3 class="section-title">Professional Experience</h3>
+
+                    <article class="mb-4 avoid-break">
+                        <div class="role-line">
+                            <h4 class="text-[13.3px] font-black text-slate-950">Senior Architect & Project Manager — BIM Lead</h4>
+                            <span class="date-pill">Apr 2021 – Present</span>
+                        </div>
+                        <div class="company-line">CFL-IMMO — Luxembourg</div>
+                        <ul class="bullet-list list-disc list-outside ml-4 text-[11.3px] text-slate-700">
+                            <li>Lead architectural design coordination, planning and BIM governance on large-scale infrastructure and mixed-use developments exceeding 100,000 m².</li>
+                            <li>Manage project interfaces across OAI-equivalent phases 1 to 6 within public procurement frameworks, including design review, tender support, execution coordination and construction follow-up.</li>
+                            <li>Coordinate technical exchanges with design offices, contractors, internal departments and the Luxembourg National Railway group, ensuring alignment between design intent, operational needs and technical constraints.</li>
+                            <li>Review models, drawings and deliverables through structured BIM-based QA/QC protocols to improve compliance, traceability and quality of project documentation.</li>
+                            <li>Develop AI-assisted dashboards and interactive reporting solutions using ACC exports, BIM data and issue-tracking logs to improve project visibility, governance and decision-making.</li>
+                            <li>Drive continuous improvement of project management methods through Autodesk Construction Cloud, BIM coordination workflows, issue management and collaborative information control.</li>
+                        </ul>
+                    </article>
+
+                    <article class="mb-4 avoid-break">
+                        <div class="role-line">
+                            <h4 class="text-[13.3px] font-black text-slate-950">Architectural Technical Lead — Pre-Construction</h4>
+                            <span class="date-pill">Dec 2019 – Aug 2021</span>
+                        </div>
+                        <div class="company-line">AMAZON EU — Luxembourg</div>
+                        <ul class="bullet-list list-disc list-outside ml-4 text-[11.3px] text-slate-700">
+                            <li>Prepared, reviewed and deployed design frameworks, QA/QC standards and technical documentation processes for new-build and refurbishment projects across European fulfilment centres.</li>
+                            <li>Coordinated interfaces between architectural design teams, technical platforms, robotics systems and operational stakeholders, supporting technically reliable pre-construction decisions.</li>
+                            <li>Improved approval workflows and documentation control for execution drawings, design compliance and regulatory deliverables across fast-moving logistics environments.</li>
+                        </ul>
+                    </article>
+                </section>
+            </div>
+        </main>
+
+        <!-- PAGE 2 -->
+        <main class="a4-page">
+            <div class="page-accent"></div>
+            <div class="pl-2">
+
+                <!-- EXPERIENCE CONTINUED -->
+                <section class="mb-4">
+                    <h3 class="section-title">Professional Experience — Continued</h3>
+
+                    <article class="mb-4 avoid-break">
+                        <div class="role-line">
+                            <h4 class="text-[13.3px] font-black text-slate-950">Project Architect & BIM Expert</h4>
+                            <span class="date-pill">2019</span>
+                        </div>
+                        <div class="company-line">AGH Consulting — VINCI Construction & Bouygues | Cambodia & Singapore</div>
+                        <ul class="bullet-list list-disc list-outside ml-4 text-[11.3px] text-slate-700">
+                            <li><strong class="text-slate-950">KOS / Sihanoukville International Airport:</strong> led design development, drawing production and architectural coordination for a new 43,700 m² terminal and associated infrastructure.</li>
+                            <li>Coordinated heavy airport-specific technical interfaces, including baggage handling systems, fire-safety requirements, service areas and passenger-flow constraints.</li>
+                            <li><strong class="text-slate-950">The Glory Tower, Singapore:</strong> managed technical design coordination for a 51-storey mixed-use high-rise in a constrained urban context.</li>
+                            <li>Delivered feasibility studies, value engineering input and structured technical progress follow-up for complex design packages.</li>
+                        </ul>
+                    </article>
+
+                    <article class="mb-4 avoid-break">
+                        <div class="role-line">
+                            <h4 class="text-[13.3px] font-black text-slate-950">Design Architect & CAD/BIM Lead</h4>
+                            <span class="date-pill">2006 – 2019</span>
+                        </div>
+                        <div class="company-line">DAR Group / Zaha Hadid Architects / Perkins&amp;Will / Populous</div>
+                        <ul class="bullet-list list-disc list-outside ml-4 text-[11.3px] text-slate-700">
+                            <li><strong class="text-slate-950">Dubai International Airport expansions:</strong> performed BIM and spatial coordination across terminal areas, including clash detection and technical integration of complex systems, BHS and service zones.</li>
+                            <li>Contributed to the design and planning of major public, institutional and entertainment projects, including arenas and presidential facilities, in collaboration with internationally recognised design practices.</li>
+                            <li>Produced and coordinated technical documentation, permit drawings and execution packages using AutoCAD, Revit and Rhinoceros.</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <!-- SELECTED PROJECTS -->
+                <section class="mb-4 avoid-break">
+                    <h3 class="section-title">Selected Major Projects</h3>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-[11.2px]">
+                        <div class="border-l-2 border-blue-700 pl-2 leading-tight"><strong class="text-blue-800">Sihanoukville International Airport — Cambodia</strong><br><span class="text-slate-500 text-[10.3px]">43,700 m² terminal — design coordination, BIM and technical follow-up.</span></div>
+                        <div class="border-l-2 border-blue-700 pl-2 leading-tight"><strong class="text-blue-800">Dubai International Airport — DXB Expansions</strong><br><span class="text-slate-500 text-[10.3px]">Terminal coordination, BIM integration, BHS and service-zone interfaces.</span></div>
+                        <div class="border-l-2 border-slate-300 pl-2 leading-tight"><strong class="text-slate-950">Coca-Cola Arena — Dubai</strong><br><span class="text-slate-500 text-[10.3px]">17,000-seat public venue — architectural synthesis and design coordination.</span></div>
+                        <div class="border-l-2 border-slate-300 pl-2 leading-tight"><strong class="text-slate-950">The Glory Tower — Singapore</strong><br><span class="text-slate-500 text-[10.3px]">51-storey premium mixed-use tower — design management and coordination.</span></div>
+                        <div class="border-l-2 border-slate-300 pl-2 leading-tight"><strong class="text-slate-950">Amazon Fulfilment Centres — Europe</strong><br><span class="text-slate-500 text-[10.3px]">Technical development of logistics, operations and freight environments.</span></div>
+                        <div class="border-l-2 border-slate-300 pl-2 leading-tight"><strong class="text-slate-950">Algerian Presidency HQ — Algeria</strong><br><span class="text-slate-500 text-[10.3px]">34,000 m² institutional project — advanced design and execution packages.</span></div>
+                    </div>
+                </section>
+
+                <!-- EXPERTISE -->
+                <section class="mb-4 avoid-break">
+                    <h3 class="section-title">Core Expertise</h3>
+                    <div class="grid grid-cols-3 gap-5">
+                        <div>
+                            <div class="skill-group-title">Project Leadership</div>
+                            <p class="skill-line">Design management · OAI phases · Public procurement · Feasibility studies · Tender support · Execution coordination · Cost / schedule / quality control</p>
+                        </div>
+                        <div>
+                            <div class="skill-group-title">Infrastructure & Technical</div>
+                            <p class="skill-line">Airport terminals · BHS interfaces · Logistics facilities · Mixed-use developments · Technical coordination · Permitting documentation · Regulatory alignment</p>
+                        </div>
+                        <div>
+                            <div class="skill-group-title">BIM, Digital Delivery & AI</div>
+                            <p class="skill-line">Revit · AutoCAD · Navisworks · BIM 360 · Autodesk Construction Cloud · ACC dashboards · QA/QC reporting · Issue management · AI-assisted reporting · Interactive HTML / React dashboards</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EDUCATION + INFO -->
+                <section class="border-t border-slate-200 pt-4 mt-4 avoid-break">
+                    <div class="grid grid-cols-[1.15fr_1fr_0.9fr] gap-6">
+                        <div>
+                            <h3 class="section-title mb-2">Education</h3>
+                            <div class="text-[11px] text-slate-700 space-y-2">
+                                <div>
+                                    <div class="font-black text-slate-950">DPLG Architect Degree</div>
+                                    <div class="text-[10.3px] text-slate-500">École Nationale Supérieure d’Architecture de Paris-Est (Éav&amp;t)</div>
+                                </div>
+                                <div>
+                                    <div class="font-black text-slate-950">Architecture & Fine Arts Studies</div>
+                                    <div class="text-[10.3px] text-slate-500">ALBA — Académie Libanaise des Beaux-Arts</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="section-title mb-2">Leadership Style</h3>
+                            <ul class="text-[10.8px] text-slate-700 space-y-1 leading-snug">
+                                <li>• Structured, analytical and quality-focused approach.</li>
+                                <li>• Comfortable coordinating senior stakeholders, technical teams and authorities.</li>
+                                <li>• Strong cross-functional communication and issue-resolution mindset.</li>
+                                <li>• Sensitive to inclusive design and environmental responsibility.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="section-title mb-2">Languages & Status</h3>
+                            <div class="text-[10.8px] text-slate-700 space-y-1 leading-snug">
+                                <p><strong class="text-slate-950">French:</strong> Fluent / C1</p>
+                                <p><strong class="text-slate-950">English:</strong> Fluent / C1</p>
+                                <p><strong class="text-slate-950">Arabic:</strong> Bilingual</p>
+                                <p><strong class="text-slate-950">German:</strong> Basic / developing</p>
+                                <div class="border-t border-slate-200 pt-2 mt-2 text-slate-500">
+                                    Dual nationality: French & Lebanese<br>
+                                    EU citizen · Based in Luxembourg
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="absolute bottom-[12mm] left-[22mm] right-[18mm] border-t border-slate-200 pt-2 text-[9.5px] text-slate-400 flex justify-between">
+                    <span>Benoit David Tahchi — Executive CV</span>
+                    <span>Senior Architecture · BIM · AI-Assisted Digital Delivery · Complex Infrastructure</span>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function exportHTML() {
+            const clonedDoc = document.documentElement.cloneNode(true);
+            const actionBars = clonedDoc.querySelectorAll('.no-print');
+            actionBars.forEach(el => el.remove());
+            const htmlContent = '<!DOCTYPE html>\n' + clonedDoc.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Benoit_Tahchi_Executive_CV_English.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
